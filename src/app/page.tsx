@@ -54,11 +54,8 @@ function HeroVisual() {
             sizes="(max-width: 1180px) 58vw, 820px"
           />
         </div>
-        <p className="hero-signature" aria-label="박하란, Haran Park">
-          <strong>박하란</strong>
-          <span>Haran Park</span>
-        </p>
       </div>
+      <p className="hero-signature">박하란</p>
       <p className="hero-visual__tag" aria-hidden="true">
         STRATEGY · COPY · EDIT
       </p>

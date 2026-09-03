@@ -475,11 +475,11 @@ section[id] {
   inset: 0;
   background: linear-gradient(
     108deg,
-    transparent 38%,
-    rgba(255, 255, 255, 0.04) 44%,
-    rgba(255, 255, 255, 0.72) 49%,
-    rgba(255, 177, 208, 0.34) 53%,
-    transparent 60%
+    transparent 37%,
+    rgba(255, 255, 255, 0.02) 44%,
+    rgba(255, 255, 255, 0.3) 49%,
+    rgba(255, 177, 208, 0.13) 54%,
+    transparent 62%
   );
   background-position: 180% 0;
   background-size: 250% 100%;
@@ -489,7 +489,7 @@ section[id] {
   -webkit-mask: url("/images/hero-shortform-phones.png") center / contain no-repeat;
   mask: url("/images/hero-shortform-phones.png") center / contain no-repeat;
   mix-blend-mode: screen;
-  animation: hero-phone-shine 5200ms ease-in-out 1500ms infinite;
+  animation: hero-phone-shine 12000ms ease-in-out 1800ms infinite;
 }
 
 .hero-phones-art {
@@ -504,33 +504,17 @@ section[id] {
 .hero-signature {
   position: absolute;
   z-index: 5;
-  right: 5.5%;
-  bottom: 5.5%;
-  display: flex;
+  right: clamp(36px, 5.5vw, 82px);
+  bottom: 7.5%;
   margin: 0;
-  padding-left: 18px;
-  flex-direction: column;
-  border-left: 1px solid rgba(255, 102, 155, 0.72);
-  color: var(--cotton);
-  line-height: 1;
-  text-align: left;
-  transform: rotate(-4deg);
-}
-
-.hero-signature strong {
-  font-family: "BareHippie", "Nanum Pen Script", cursive;
-  font-size: clamp(24px, 2.2vw, 34px);
+  color: rgba(255, 102, 155, 0.84);
+  font-family: "BareHippie", "Nanum Brush Script", "Nanum Pen Script", cursive;
+  font-size: clamp(34px, 2.8vw, 46px);
   font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 18px rgba(255, 102, 155, 0.16);
   white-space: nowrap;
-}
-
-.hero-signature span {
-  margin-top: 7px;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .hero-visual__tag {
@@ -669,21 +653,21 @@ section[id] {
 
 @keyframes hero-phone-shine {
   0%,
-  48% {
+  26% {
     background-position: 180% 0;
     opacity: 0;
   }
 
-  53% {
-    opacity: 0.9;
+  32% {
+    opacity: 0.34;
   }
 
-  76% {
+  78% {
     background-position: -80% 0;
-    opacity: 0.72;
+    opacity: 0.22;
   }
 
-  82%,
+  86%,
   100% {
     background-position: -80% 0;
     opacity: 0;

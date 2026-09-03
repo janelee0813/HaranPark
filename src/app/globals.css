@@ -226,7 +226,7 @@ section[id] {
   align-items: center;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
-  background: var(--black);
+  background: linear-gradient(112deg, #070707 0%, #070707 52%, #200b13 70%, #641a38 86%, #c63f70 100%);
   color: var(--white);
 }
 
@@ -274,6 +274,41 @@ section[id] {
 .hero h1 span {
   display: block;
   white-space: nowrap;
+}
+
+.hero__intro,
+.hero__title-line {
+  opacity: 0;
+  will-change: opacity, transform;
+  animation: hero-copy-reveal 900ms cubic-bezier(0.2, 0.72, 0.2, 1) both;
+}
+
+.hero__intro--eyebrow {
+  animation-delay: 120ms;
+}
+
+.hero__title-line:nth-child(1) {
+  animation-delay: 240ms;
+}
+
+.hero__title-line:nth-child(2) {
+  animation-delay: 340ms;
+}
+
+.hero__title-line:nth-child(3) {
+  animation-delay: 440ms;
+}
+
+.hero__intro--description {
+  animation-delay: 580ms;
+}
+
+.hero__intro--actions {
+  animation-delay: 700ms;
+}
+
+.hero__intro--metrics {
+  animation-delay: 820ms;
 }
 
 .hero__title-accent {
@@ -357,21 +392,19 @@ section[id] {
   overflow: hidden;
 }
 
-.hero-visual__plane {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 43%;
-  clip-path: polygon(46% 0, 100% 0, 100% 100%, 0 100%);
-  background: var(--cotton);
-}
-
 .hero-visual__phones {
+  --phone-x: 3%;
+  --phone-y: 3%;
+  --phone-scale: 0.9;
   object-fit: contain;
   object-position: right center;
-  transform: translate(3%, 3%) scale(0.9);
+  transform: translate(var(--phone-x), var(--phone-y)) scale(var(--phone-scale));
   filter: drop-shadow(0 28px 46px rgba(0, 0, 0, 0.48));
+  opacity: 0;
+  will-change: opacity, transform;
+  animation:
+    hero-phones-reveal 1200ms cubic-bezier(0.16, 0.82, 0.2, 1) 140ms both,
+    hero-phones-float 5600ms ease-in-out 1340ms infinite;
 }
 
 .hero-visual__tag {
@@ -452,6 +485,43 @@ section[id] {
   width: 54px;
   height: 1px;
   background: var(--cotton);
+}
+
+@keyframes hero-copy-reveal {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-phones-reveal {
+  from {
+    transform: translate(calc(var(--phone-x) + 6%), calc(var(--phone-y) + 8%)) scale(var(--phone-scale)) rotate(1.8deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(var(--phone-x), var(--phone-y)) scale(var(--phone-scale)) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-phones-float {
+  0%,
+  100% {
+    transform: translate(var(--phone-x), var(--phone-y)) scale(var(--phone-scale)) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(var(--phone-x), calc(var(--phone-y) - 1.3%)) scale(var(--phone-scale)) rotate(-0.35deg);
+    opacity: 1;
+  }
 }
 
 .section-label {
@@ -1552,13 +1622,11 @@ section[id] {
     width: min(57%, 610px);
   }
 
-  .hero-visual__plane {
-    width: 41%;
-  }
-
   .hero-visual__phones {
+    --phone-x: 13%;
+    --phone-y: 3%;
+    --phone-scale: 0.74;
     object-position: right center;
-    transform: translate(13%, 3%) scale(0.74);
   }
 
   .hero__metrics {
@@ -1675,7 +1743,7 @@ section[id] {
   .hero {
     display: flex;
     min-height: auto;
-    padding: calc(var(--header-height) + 44px) 0 0;
+    padding: calc(var(--header-height) + 44px) 0 72px;
     flex-direction: column;
     align-items: stretch;
   }
@@ -1696,22 +1764,7 @@ section[id] {
   }
 
   .hero__media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 560px;
-    margin-top: -28px;
-    order: 2;
-  }
-
-  .hero-visual__plane {
-    width: 70%;
-    clip-path: polygon(42% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .hero-visual__phones {
-    object-position: center bottom;
-    transform: translate(8%, 5%) scale(0.86);
+    display: none;
   }
 
   .hero__metrics > div {
@@ -1800,7 +1853,7 @@ section[id] {
   .hero {
     display: flex;
     min-height: auto;
-    padding: calc(var(--header-height) + 42px) 0 0;
+    padding: calc(var(--header-height) + 42px) 0 64px;
     flex-direction: column;
     align-items: stretch;
   }
@@ -1856,29 +1909,6 @@ section[id] {
   .button--text {
     justify-content: space-between;
     padding-inline: 2px;
-  }
-
-  .hero__media {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: 450px;
-    margin-top: -16px;
-    order: 2;
-  }
-
-  .hero-visual__plane {
-    width: 76%;
-    clip-path: polygon(42% 0, 100% 0, 100% 100%, 0 100%);
-  }
-
-  .hero-visual__phones {
-    object-position: center bottom;
-    transform: translate(5%, 5%) scale(0.9);
-  }
-
-  .hero-visual__tag {
-    display: none;
   }
 
   .hero__metrics {

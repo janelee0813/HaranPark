@@ -40,7 +40,6 @@ function SectionLabel({ number, children }: { number: string; children: React.Re
 function HeroVisual() {
   return (
     <div className="hero-visual">
-      <div className="hero-visual__plane" aria-hidden="true" />
       <Image
         className="hero-visual__phones"
         src="/images/hero-shortform-phones.png"
@@ -69,21 +68,24 @@ export default function Home() {
 
       <main id="main-content">
         <section className="hero" id="top">
-          <div className="hero__media" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
+          <div className="hero__media">
             <HeroVisual />
           </div>
           <div className="container hero__layout">
-            <div className="hero__content" data-reveal>
-              <p className="eyebrow">{hero.eyebrow}</p>
-              <h1>
+            <div className="hero__content">
+              <p className="eyebrow hero__intro hero__intro--eyebrow">{hero.eyebrow}</p>
+              <h1 className="hero__title">
                 {hero.title.map((line, index) => (
-                  <span className={index === 1 ? "hero__title-accent" : undefined} key={line}>
+                  <span
+                    className={`hero__title-line${index === 1 ? " hero__title-accent" : ""}`}
+                    key={line}
+                  >
                     {line}
                   </span>
                 ))}
               </h1>
-              <p className="hero__description">{hero.description}</p>
-              <div className="hero__actions">
+              <p className="hero__description hero__intro hero__intro--description">{hero.description}</p>
+              <div className="hero__actions hero__intro hero__intro--actions">
                 <TrackedLink
                   className="button button--primary"
                   href="#contact"
@@ -98,7 +100,7 @@ export default function Home() {
                   <ArrowDown aria-hidden="true" />
                 </a>
               </div>
-              <dl className="hero__metrics" aria-label="주요 작업 수치">
+              <dl className="hero__metrics hero__intro hero__intro--metrics" aria-label="주요 작업 수치">
                 {trustNumbers.map((item, index) => {
                   const Icon = heroMetricIcons[index];
                   return (

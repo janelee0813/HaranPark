@@ -5,13 +5,13 @@ import {
   ArrowUpRight,
   ChartNoAxesCombined,
   Clapperboard,
+  LockKeyhole,
   Mail,
   UsersRound,
 } from "lucide-react";
 import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { ContactForm } from "@/components/ContactForm";
 import { Header } from "@/components/Header";
-import { HeroPhoneVideo } from "@/components/HeroPhoneVideo";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { RevealController } from "@/components/RevealController";
@@ -53,17 +53,11 @@ function HeroVisual() {
             unoptimized
             sizes="(max-width: 1180px) 58vw, 820px"
           />
-          <HeroPhoneVideo />
-          <Image
-            className="hero-phones-art hero-phones-art--front"
-            src="/images/hero-shortform-phones.png"
-            alt=""
-            fill
-            priority
-            unoptimized
-            sizes="(max-width: 1180px) 58vw, 820px"
-          />
         </div>
+        <p className="hero-signature" aria-label="박하란, Haran Park">
+          <strong>박하란</strong>
+          <span>Haran Park</span>
+        </p>
       </div>
       <p className="hero-visual__tag" aria-hidden="true">
         STRATEGY · COPY · EDIT
@@ -379,8 +373,11 @@ export default function Home() {
           </div>
           <p>© {new Date().getFullYear()} HARAN PARK. ALL RIGHTS RESERVED.</p>
         </div>
-        <div className="container footer__admin-row" data-reveal="up">
-          <a href="/admin">관리자 페이지</a>
+        <div className="container footer__admin-row">
+          <a href="/admin">
+            <LockKeyhole aria-hidden="true" />
+            관리자 페이지
+          </a>
         </div>
       </footer>
       <MobileStickyCTA />

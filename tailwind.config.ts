@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         cherry: "#47131C",
-        cotton: "#FFD7E7",
-        lemon: "#FFFDE9",
+        cotton: "#FF669B",
+        lemon: "#FFF3D2",
       },
       fontFamily: {
         display: ["var(--font-display)"],

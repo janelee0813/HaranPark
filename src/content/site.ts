@@ -18,7 +18,7 @@ export const siteConfig = {
 
 export const hero = {
   eyebrow: "1인 퍼포먼스 숏폼 마케터 박하란",
-  title: ["예쁜 영상에서 끝나지 않게,", "팔릴 이유까지 설계합니다."],
+  title: ["예쁜 영상에서 끝나지 않게,", "팔릴 이유까지", "설계합니다."],
   description:
     "브랜드·타깃·페인포인트를 먼저 분석하고, 후킹부터 CTA, 편집과 수정까지 한 사람이 끝까지 책임합니다.",
   primaryCta: "브랜드 링크 보내기",
@@ -289,10 +289,7 @@ export const portfolio: Array<{
 export const contact = {
   eyebrow: "START WITH ONE LINK",
   title: "브랜드 링크 하나면, 첫 대화는 충분합니다.",
-  description: [
-    "브랜드 링크를 보내주시면, 지금 필요한 숏폼 방향부터 살펴보겠습니다.",
-    "기존 콘텐츠와 목표를 보고 바꿔볼 만한 지점부터 말씀드립니다.",
-  ],
+  description: ["브랜드 링크를 보내주시면, 기존 콘텐츠와 목표를 살펴보고 필요한 숏폼 방향과 개선 지점을 말씀드립니다."],
   closing: "한 번의 납품보다, 함께 개선하고 성장하는 파트너가 되겠습니다.",
 };
 

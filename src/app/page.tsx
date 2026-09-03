@@ -1,4 +1,13 @@
-import { ArrowDown, ArrowRight, ArrowUpRight, Mail } from "lucide-react";
+import Image from "next/image";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  ChartNoAxesCombined,
+  Clapperboard,
+  Mail,
+  UsersRound,
+} from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { Header } from "@/components/Header";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
@@ -30,36 +39,24 @@ function SectionLabel({ number, children }: { number: string; children: React.Re
 
 function HeroVisual() {
   return (
-    <div className="hero-visual" aria-label="후킹부터 행동 유도까지 이어지는 숏폼 구조를 표현한 그래픽">
-      <div className="hero-visual__topline">
-        <span>SHORTFORM / 9:16</span>
-        <span>00:15</span>
-      </div>
-      <div className="hero-visual__frame">
-        <div className="hero-visual__scene scene-one">
-          <span>01</span>
-          <strong>HOOK</strong>
-          <p>멈춰 보게 만드는 첫 문장</p>
-        </div>
-        <div className="hero-visual__scene scene-two">
-          <span>02</span>
-          <strong>REASON</strong>
-          <p>제품이 필요한 이유와 근거</p>
-        </div>
-        <div className="hero-visual__scene scene-three">
-          <span>03</span>
-          <strong>ACTION</strong>
-          <p>다음 행동을 만드는 CTA</p>
-        </div>
-      </div>
-      <div className="hero-visual__caption">
-        <span>STRATEGY</span>
-        <span>WRITING</span>
-        <span>EDITING</span>
-      </div>
+    <div className="hero-visual">
+      <div className="hero-visual__plane" aria-hidden="true" />
+      <Image
+        className="hero-visual__phones"
+        src="/images/hero-shortform-phones.png"
+        alt="뷰티와 라이프스타일 숏폼 콘텐츠가 재생 중인 두 개의 스마트폰"
+        fill
+        priority
+        sizes="(max-width: 767px) 92vw, (max-width: 1180px) 52vw, 650px"
+      />
+      <p className="hero-visual__tag" aria-hidden="true">
+        STRATEGY · COPY · EDIT
+      </p>
     </div>
   );
 }
+
+const heroMetricIcons = [UsersRound, Clapperboard, ChartNoAxesCombined];
 
 export default function Home() {
   return (
@@ -72,17 +69,17 @@ export default function Home() {
 
       <main id="main-content">
         <section className="hero" id="top">
-          <div className="hero-stripes" aria-hidden="true">
-            <span />
-            <span />
-            <span />
+          <div className="hero__media" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
+            <HeroVisual />
           </div>
-          <div className="container hero__grid">
+          <div className="container hero__layout">
             <div className="hero__content" data-reveal>
               <p className="eyebrow">{hero.eyebrow}</p>
               <h1>
-                {hero.title.map((line) => (
-                  <span key={line}>{line}</span>
+                {hero.title.map((line, index) => (
+                  <span className={index === 1 ? "hero__title-accent" : undefined} key={line}>
+                    {line}
+                  </span>
                 ))}
               </h1>
               <p className="hero__description">{hero.description}</p>
@@ -101,30 +98,24 @@ export default function Home() {
                   <ArrowDown aria-hidden="true" />
                 </a>
               </div>
-              <p className="hero__positioning">{hero.positioning}</p>
-            </div>
-            <div className="hero__media" data-reveal style={{ "--reveal-delay": "120ms" } as React.CSSProperties}>
-              <HeroVisual />
+              <dl className="hero__metrics" aria-label="주요 작업 수치">
+                {trustNumbers.map((item, index) => {
+                  const Icon = heroMetricIcons[index];
+                  return (
+                    <div key={item.label}>
+                      <Icon aria-hidden="true" />
+                      <dd>{item.value}</dd>
+                      <dt>{item.label}</dt>
+                    </div>
+                  );
+                })}
+              </dl>
             </div>
           </div>
           <div className="container hero__footer" aria-hidden="true">
             <span>SCROLL TO EXPLORE</span>
             <span className="hero__footer-line" />
             <span>01 — 07</span>
-          </div>
-        </section>
-
-        <section className="trust-strip" aria-label="주요 작업 수치">
-          <div className="container trust-strip__inner">
-            <p>충분히 만들고, 계속 개선해왔습니다.</p>
-            <dl>
-              {trustNumbers.map((item) => (
-                <div key={item.label}>
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </section>
 
@@ -361,6 +352,9 @@ export default function Home() {
             ))}
           </div>
           <p>© {new Date().getFullYear()} HARAN PARK. ALL RIGHTS RESERVED.</p>
+        </div>
+        <div className="container footer__admin-row">
+          <a href="/admin">관리자 페이지</a>
         </div>
       </footer>
       <MobileStickyCTA />

@@ -92,10 +92,18 @@ export default function Home() {
                     key={line}
                   >
                     {line}
+                    {index === 0 && <em className="hero__one-stop">one-stop</em>}
                   </span>
                 ))}
               </h1>
-              <p className="hero__description hero__intro hero__intro--description">{hero.description}</p>
+              <p className="hero__description hero__intro hero__intro--description">
+                {hero.description.map((line) => (
+                  <span key={line.before}>
+                    {line.before}
+                    {line.accent && <strong>{line.accent}</strong>}
+                  </span>
+                ))}
+              </p>
               <div className="hero__actions hero__intro hero__intro--actions">
                 <TrackedLink
                   className="button button--primary"
@@ -134,10 +142,23 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="section portfolio" id="portfolio">
+          <div className="container">
+            <div className="portfolio__heading" data-reveal="left">
+              <SectionLabel number="01">PORTFOLIO</SectionLabel>
+              <h2>카테고리는 달라도, 반응을 만드는 순서는 같습니다.</h2>
+              <p>공개 승인된 작업 이미지는 같은 구조 안에서 바로 교체할 수 있도록 준비했습니다.</p>
+            </div>
+            <div id="portfolio-list">
+              <PortfolioGrid />
+            </div>
+          </div>
+        </section>
+
         <section className="section difference" id="difference">
           <div className="container">
             <div className="section-heading" data-reveal="up">
-              <SectionLabel number="01">DIFFERENCE</SectionLabel>
+              <SectionLabel number="02">DIFFERENCE</SectionLabel>
               <h2>{difference.title}</h2>
             </div>
 
@@ -171,7 +192,7 @@ export default function Home() {
         <section className="section proof" id="proof">
           <div className="container">
             <div className="proof__heading" data-reveal="left">
-              <SectionLabel number="02">PROOF</SectionLabel>
+              <SectionLabel number="03">PROOF</SectionLabel>
               <p>{featuredCase.eyebrow}</p>
               <h2>{featuredCase.title}</h2>
               <div className="proof__meta">
@@ -248,7 +269,7 @@ export default function Home() {
         <section className="section why" id="why-haran">
           <div className="container">
             <div className="why__intro" data-reveal="left">
-              <SectionLabel number="03">{whyHaran.eyebrow}</SectionLabel>
+              <SectionLabel number="04">{whyHaran.eyebrow}</SectionLabel>
               <h2>{whyHaran.title}</h2>
               <p>{whyHaran.description}</p>
             </div>
@@ -267,7 +288,7 @@ export default function Home() {
         <section className="section process" id="process">
           <div className="container">
             <div className="section-heading process__heading" data-reveal="up">
-              <SectionLabel number="04">HOW IT WORKS</SectionLabel>
+              <SectionLabel number="05">HOW IT WORKS</SectionLabel>
               <h2>만드는 순서보다 먼저, 생각하는 순서를 설계합니다.</h2>
             </div>
 
@@ -309,19 +330,6 @@ export default function Home() {
                   프로젝트 범위와 일정은 보유 자료, 촬영 여부, 제작 편수에 따라 협의합니다.
                 </p>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section portfolio" id="portfolio">
-          <div className="container">
-            <div className="portfolio__heading" data-reveal="left">
-              <SectionLabel number="05">PORTFOLIO</SectionLabel>
-              <h2>카테고리는 달라도, 반응을 만드는 순서는 같습니다.</h2>
-              <p>공개 승인된 작업 이미지는 같은 구조 안에서 바로 교체할 수 있도록 준비했습니다.</p>
-            </div>
-            <div id="portfolio-list">
-              <PortfolioGrid />
             </div>
           </div>
         </section>

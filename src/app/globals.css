@@ -325,6 +325,35 @@ section[id] {
   color: var(--cotton);
 }
 
+.hero__one-stop {
+  position: relative;
+  top: -0.18em;
+  display: inline-block;
+  margin-left: 15px;
+  color: var(--cotton);
+  font-family: "BareHippie", "Apple Chancery", "Segoe Script", cursive;
+  font-size: 0.36em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  transform: rotate(-7deg);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.hero__one-stop::after {
+  position: absolute;
+  right: -3px;
+  bottom: -5px;
+  left: -3px;
+  height: 1px;
+  transform: rotate(-2deg) scaleX(0);
+  transform-origin: left;
+  background: currentColor;
+  content: "";
+  animation: hero-one-stop-line 620ms ease 980ms forwards;
+}
+
 .hero__description {
   max-width: 700px;
   margin: 0;
@@ -332,6 +361,16 @@ section[id] {
   font-size: 17px;
   line-height: 1.75;
   word-break: keep-all;
+}
+
+.hero__description span {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero__description strong {
+  color: var(--cotton);
+  font-weight: 600;
 }
 
 .hero__actions {
@@ -583,6 +622,12 @@ section[id] {
   to {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes hero-one-stop-line {
+  to {
+    transform: rotate(-2deg) scaleX(1);
   }
 }
 
@@ -2213,6 +2258,12 @@ section[id] {
     white-space: normal;
   }
 
+  .hero__one-stop {
+    top: -0.12em;
+    margin-left: 8px;
+    font-size: 0.32em;
+  }
+
   .hero h1 span + span::before {
     content: none;
   }
@@ -2221,6 +2272,10 @@ section[id] {
     padding-right: 14px;
     font-size: 16px;
     line-height: 1.75;
+  }
+
+  .hero__description span {
+    white-space: normal;
   }
 
   .hero__actions {

@@ -8,19 +8,22 @@ export const siteConfig = {
   phone: "010-2723-0019",
   showPhone: false,
   navigation: [
+    { label: "포트폴리오", href: "#portfolio" },
     { label: "차이", href: "#difference" },
     { label: "성과", href: "#proof" },
     { label: "작업 방식", href: "#process" },
-    { label: "포트폴리오", href: "#portfolio" },
     { label: "문의", href: "#contact" },
   ],
 } as const;
 
 export const hero = {
   eyebrow: "1인 퍼포먼스 숏폼 마케터 박하란",
-  title: ["예쁜 영상에서 끝나지 않게,", "팔릴 이유까지", "설계합니다."],
-  description:
-    "브랜드·타깃·페인포인트를 먼저 분석하고, 후킹부터 CTA, 편집과 수정까지 한 사람이 끝까지 책임합니다.",
+  title: ["기획부터 편집까지,", "매출이 터지는", "퍼포먼스 숏폼"],
+  description: [
+    { before: "대행사보다 ", accent: "가까이," },
+    { before: "인하우스보다 ", accent: "가볍게." },
+    { before: "기획부터 편집까지 한 명이 끝냅니다.", accent: "" },
+  ],
   primaryCta: "브랜드 링크 보내기",
   secondaryCta: "성과 사례 보기",
   positioning: "인하우스의 밀착감, 외부 파트너의 유연함.",

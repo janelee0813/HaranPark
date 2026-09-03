@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { Header } from "@/components/Header";
+import { HeroPhoneVideo } from "@/components/HeroPhoneVideo";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { PortfolioGrid } from "@/components/PortfolioGrid";
 import { RevealController } from "@/components/RevealController";
@@ -40,14 +41,29 @@ function SectionLabel({ number, children }: { number: string; children: React.Re
 function HeroVisual() {
   return (
     <div className="hero-visual">
-      <Image
-        className="hero-visual__phones"
-        src="/images/hero-shortform-phones.png"
-        alt="뷰티와 라이프스타일 숏폼 콘텐츠가 재생 중인 두 개의 스마트폰"
-        fill
-        priority
-        sizes="(max-width: 767px) 92vw, (max-width: 1180px) 52vw, 650px"
-      />
+      <div className="hero-phones-stage">
+        <div className="hero-phones-tilt">
+          <Image
+            className="hero-phones-art hero-phones-art--base"
+            src="/images/hero-shortform-phones.png"
+            alt="뷰티와 라이프스타일 숏폼 콘텐츠가 재생 중인 두 개의 스마트폰"
+            fill
+            priority
+            unoptimized
+            sizes="(max-width: 1180px) 58vw, 820px"
+          />
+          <HeroPhoneVideo />
+          <Image
+            className="hero-phones-art hero-phones-art--front"
+            src="/images/hero-shortform-phones.png"
+            alt=""
+            fill
+            priority
+            unoptimized
+            sizes="(max-width: 1180px) 58vw, 820px"
+          />
+        </div>
+      </div>
       <p className="hero-visual__tag" aria-hidden="true">
         STRATEGY · COPY · EDIT
       </p>

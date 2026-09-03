@@ -392,19 +392,118 @@ section[id] {
   overflow: hidden;
 }
 
-.hero-visual__phones {
+.hero-phones-stage {
   --phone-x: 3%;
   --phone-y: 3%;
   --phone-scale: 0.9;
-  object-fit: contain;
-  object-position: right center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1199 / 1312;
   transform: translate(var(--phone-x), var(--phone-y)) scale(var(--phone-scale));
-  filter: drop-shadow(0 28px 46px rgba(0, 0, 0, 0.48));
   opacity: 0;
+  perspective: 1500px;
+  transform-origin: center;
   will-change: opacity, transform;
   animation:
     hero-phones-reveal 1200ms cubic-bezier(0.16, 0.82, 0.2, 1) 140ms both,
     hero-phones-float 5600ms ease-in-out 1340ms infinite;
+}
+
+.hero-phones-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+  animation: hero-phones-tilt 7200ms ease-in-out 1340ms infinite;
+}
+
+.hero-phones-art {
+  object-fit: contain;
+  filter: drop-shadow(0 28px 46px rgba(0, 0, 0, 0.48));
+}
+
+.hero-phones-art--base {
+  z-index: 1;
+}
+
+.hero-phone-video {
+  position: absolute;
+  z-index: 2;
+  top: 2.8%;
+  left: 59.4%;
+  width: 31.4%;
+  height: 75.6%;
+  overflow: hidden;
+  transform: skewX(-6.2deg) rotate(-0.4deg) translateZ(2px);
+  transform-origin: top left;
+  border-radius: 12% / 5%;
+  background: #090909;
+  opacity: 0;
+  animation: hero-video-reveal 480ms ease 120ms forwards;
+}
+
+.hero-phone-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-phone-video::after {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: inherit;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.24);
+  content: "";
+  pointer-events: none;
+}
+
+.hero-phone-video__island {
+  position: absolute;
+  z-index: 2;
+  top: 1.8%;
+  left: 50%;
+  width: 27%;
+  height: 3.5%;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #050505;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.08);
+}
+
+.hero-phone-video__like {
+  position: absolute;
+  z-index: 3;
+  top: 43%;
+  right: 6.5%;
+  display: grid;
+  justify-items: center;
+  color: var(--white);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.48));
+}
+
+.hero-phone-video__like svg {
+  width: 30px;
+  height: 30px;
+  stroke-width: 2;
+  transform-origin: center;
+  animation: hero-phone-like 4800ms cubic-bezier(0.2, 0.8, 0.2, 1) 2100ms infinite;
+}
+
+.hero-phone-video__like small {
+  margin-top: 3px;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.hero-phones-art--front {
+  z-index: 3;
+  clip-path: polygon(25% 24%, 62% 27%, 51% 100%, 7% 94%);
+  transform: translateZ(4px);
 }
 
 .hero-visual__tag {
@@ -520,6 +619,56 @@ section[id] {
 
   50% {
     transform: translate(var(--phone-x), calc(var(--phone-y) - 1.3%)) scale(var(--phone-scale)) rotate(-0.35deg);
+    opacity: 1;
+  }
+}
+
+@keyframes hero-phones-tilt {
+  0%,
+  100% {
+    transform: rotateX(0.7deg) rotateY(-2.2deg);
+  }
+
+  50% {
+    transform: rotateX(-0.7deg) rotateY(2.4deg);
+  }
+}
+
+@keyframes hero-phone-like {
+  0%,
+  68%,
+  100% {
+    transform: scale(1);
+    fill: transparent;
+    color: var(--white);
+  }
+
+  73% {
+    transform: scale(0.78);
+    fill: transparent;
+    color: var(--white);
+  }
+
+  78%,
+  88% {
+    transform: scale(1.28);
+    fill: var(--cotton);
+    color: var(--cotton);
+  }
+
+  94% {
+    transform: scale(1);
+    fill: var(--cotton);
+    color: var(--cotton);
+  }
+}
+
+@keyframes hero-video-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
     opacity: 1;
   }
 }
@@ -1622,11 +1771,10 @@ section[id] {
     width: min(57%, 610px);
   }
 
-  .hero-visual__phones {
+  .hero-phones-stage {
     --phone-x: 13%;
     --phone-y: 3%;
     --phone-scale: 0.74;
-    object-position: right center;
   }
 
   .hero__metrics {

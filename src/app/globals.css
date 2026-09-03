@@ -7,7 +7,8 @@
   --cherry-dark: #2f0b12;
   --cotton: #ffd7e7;
   --lemon: #fffde9;
-  --paper: #fffef5;
+  --white: #ffffff;
+  --paper: #ffffff;
   --line: rgba(71, 19, 28, 0.22);
   --font-display: "Paperlogy", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
   --font-sans: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
@@ -21,13 +22,13 @@
 
 html {
   scroll-behavior: smooth;
-  background: var(--lemon);
+  background: var(--white);
 }
 
 body {
   margin: 0;
   overflow-x: hidden;
-  background: var(--lemon);
+  background: var(--white);
   color: var(--cherry);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -81,7 +82,7 @@ button {
   padding: 12px 18px;
   transform: translateY(-160%);
   border: 1px solid var(--cherry);
-  background: var(--lemon);
+  background: var(--white);
   font-weight: 700;
   transition: transform 160ms ease;
 }
@@ -111,13 +112,13 @@ section[id] {
   left: 0;
   height: var(--header-height);
   border-bottom: 1px solid transparent;
-  background: rgba(255, 253, 233, 0);
+  background: rgba(255, 255, 255, 0);
   transition: background-color 220ms ease, border-color 220ms ease;
 }
 
 .site-header.is-scrolled {
   border-color: var(--line);
-  background: rgba(255, 253, 233, 0.96);
+  background: rgba(255, 255, 255, 0.96);
 }
 
 .site-header__inner {
@@ -546,7 +547,7 @@ section[id] {
 }
 
 .difference-panel--1 {
-  background: var(--paper);
+  background: var(--lemon);
 }
 
 .difference-panel--2 {
@@ -889,7 +890,7 @@ section[id] {
 }
 
 .process {
-  background: var(--paper);
+  background: var(--white);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -1058,7 +1059,7 @@ section[id] {
   overflow: hidden;
   border: 1px solid var(--cherry);
   border-radius: 8px;
-  background: var(--paper);
+  background: var(--white);
 }
 
 .portfolio-card__media {
@@ -1551,7 +1552,7 @@ section[id] {
     padding: 0;
     border: 1px solid var(--cherry);
     border-radius: 6px;
-    background: var(--lemon);
+    background: var(--white);
     cursor: pointer;
   }
 
@@ -1571,7 +1572,7 @@ section[id] {
     transform: translateY(-110%);
     flex-direction: column;
     border-top: 1px solid var(--line);
-    background: var(--lemon);
+    background: var(--white);
     visibility: hidden;
     transition: transform 260ms ease, visibility 260ms;
   }

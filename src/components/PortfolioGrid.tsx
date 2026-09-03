@@ -2,6 +2,7 @@
 
 import { Minus, Plus } from "lucide-react";
 import { useState } from "react";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { portfolio } from "@/content/site";
 import { trackEvent } from "@/lib/analytics";
 
@@ -16,8 +17,8 @@ export function PortfolioGrid() {
           <article
             className="portfolio-card"
             key={item.id}
-            data-reveal
-            style={{ "--reveal-delay": `${Math.min(index, 3) * 70}ms` } as React.CSSProperties}
+            data-reveal="scale"
+            style={{ "--reveal-delay": `${Math.min(index, 3) * 100}ms` } as React.CSSProperties}
           >
             <div className={`portfolio-card__media media-variant-${item.id}`} aria-hidden="true">
               <span className="portfolio-card__index">0{item.id}</span>
@@ -27,7 +28,7 @@ export function PortfolioGrid() {
             <div className="portfolio-card__body">
               <div className="portfolio-card__meta">
                 <span>{item.category}</span>
-                <strong>{item.result}</strong>
+                <strong><AnimatedNumber value={item.result} duration={1200} /></strong>
               </div>
               <h3>{item.title}</h3>
               <ul aria-label="적용 전략">

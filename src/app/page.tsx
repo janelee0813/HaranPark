@@ -8,6 +8,7 @@ import {
   Mail,
   UsersRound,
 } from "lucide-react";
+import { AnimatedNumber } from "@/components/AnimatedNumber";
 import { ContactForm } from "@/components/ContactForm";
 import { Header } from "@/components/Header";
 import { HeroPhoneVideo } from "@/components/HeroPhoneVideo";
@@ -122,7 +123,9 @@ export default function Home() {
                   return (
                     <div key={item.label}>
                       <Icon aria-hidden="true" />
-                      <dd>{item.value}</dd>
+                      <dd>
+                        <AnimatedNumber value={item.value} duration={1400} delay={860 + index * 110} />
+                      </dd>
                       <dt>{item.label}</dt>
                     </div>
                   );
@@ -139,14 +142,19 @@ export default function Home() {
 
         <section className="section difference" id="difference">
           <div className="container">
-            <div className="section-heading" data-reveal>
+            <div className="section-heading" data-reveal="up">
               <SectionLabel number="01">DIFFERENCE</SectionLabel>
               <h2>{difference.title}</h2>
             </div>
 
             <div className="difference-grid">
               {[difference.passive, difference.active].map((column, columnIndex) => (
-                <article className={`difference-panel difference-panel--${columnIndex + 1}`} key={column.title} data-reveal>
+                <article
+                  className={`difference-panel difference-panel--${columnIndex + 1}`}
+                  key={column.title}
+                  data-reveal={columnIndex === 0 ? "left" : "right"}
+                  style={{ "--reveal-delay": `${columnIndex * 100}ms` } as React.CSSProperties}
+                >
                   <p>{column.kicker}</p>
                   <h3>{column.title}</h3>
                   <ol>
@@ -160,7 +168,7 @@ export default function Home() {
                 </article>
               ))}
             </div>
-            <p className="difference__closing" data-reveal>
+            <p className="difference__closing" data-reveal="right">
               {difference.closing}
             </p>
           </div>
@@ -168,7 +176,7 @@ export default function Home() {
 
         <section className="section proof" id="proof">
           <div className="container">
-            <div className="proof__heading" data-reveal>
+            <div className="proof__heading" data-reveal="left">
               <SectionLabel number="02">PROOF</SectionLabel>
               <p>{featuredCase.eyebrow}</p>
               <h2>{featuredCase.title}</h2>
@@ -179,7 +187,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="metrics" data-reveal>
+            <div className="metrics" data-reveal="scale">
               <div className="metrics__labels" aria-hidden="true">
                 <span>BEFORE</span>
                 <span>AFTER</span>
@@ -188,16 +196,16 @@ export default function Home() {
                 <div className="metric" key={metric.label}>
                   <p>{metric.label}</p>
                   <div>
-                    <span>{metric.before}</span>
+                    <span><AnimatedNumber value={metric.before} duration={1150} /></span>
                     <ArrowRight aria-hidden="true" />
-                    <strong>{metric.after}</strong>
+                    <strong><AnimatedNumber value={metric.after} duration={1450} delay={120} /></strong>
                   </div>
                 </div>
               ))}
             </div>
 
             <div className="proof__details">
-              <div className="proof__change" data-reveal>
+              <div className="proof__change" data-reveal="left">
                 <p>WHAT CHANGED</p>
                 <ol>
                   {featuredCase.improvements.map((item, index) => (
@@ -208,7 +216,7 @@ export default function Home() {
                   ))}
                 </ol>
               </div>
-              <div className="proof__conclusion" data-reveal>
+              <div className="proof__conclusion" data-reveal="right">
                 <p>핵심은 영상 자체가 아니라,</p>
                 <strong>제품의 가치를 타깃에게 맞게 연결해 행동으로 이어지게 만드는 것입니다.</strong>
                 <TrackedLink
@@ -228,13 +236,13 @@ export default function Home() {
 
         <section className="testimonials" aria-labelledby="testimonial-title">
           <div className="container">
-            <div className="testimonials__heading" data-reveal>
+            <div className="testimonials__heading" data-reveal="up">
               <p>CLIENT NOTES</p>
               <h2 id="testimonial-title">일이 줄고, 다음 소재가 이어졌습니다.</h2>
             </div>
             <div className="testimonial-grid">
               {testimonials.map((item, index) => (
-                <figure key={item.quote} data-reveal style={{ "--reveal-delay": `${index * 70}ms` } as React.CSSProperties}>
+                <figure key={item.quote} data-reveal="scale" style={{ "--reveal-delay": `${index * 110}ms` } as React.CSSProperties}>
                   <blockquote>“{item.quote}”</blockquote>
                   <figcaption>{item.attribution}</figcaption>
                 </figure>
@@ -245,14 +253,14 @@ export default function Home() {
 
         <section className="section why" id="why-haran">
           <div className="container">
-            <div className="why__intro" data-reveal>
+            <div className="why__intro" data-reveal="left">
               <SectionLabel number="03">{whyHaran.eyebrow}</SectionLabel>
               <h2>{whyHaran.title}</h2>
               <p>{whyHaran.description}</p>
             </div>
             <div className="strength-grid">
               {whyHaran.strengths.map((strength, index) => (
-                <article key={strength.label} data-reveal style={{ "--reveal-delay": `${index * 70}ms` } as React.CSSProperties}>
+                <article key={strength.label} data-reveal="up" style={{ "--reveal-delay": `${index * 110}ms` } as React.CSSProperties}>
                   <span>{strength.number}</span>
                   <h3>{strength.label}</h3>
                   <p>{strength.description}</p>
@@ -264,12 +272,12 @@ export default function Home() {
 
         <section className="section process" id="process">
           <div className="container">
-            <div className="section-heading process__heading" data-reveal>
+            <div className="section-heading process__heading" data-reveal="up">
               <SectionLabel number="04">HOW IT WORKS</SectionLabel>
               <h2>만드는 순서보다 먼저, 생각하는 순서를 설계합니다.</h2>
             </div>
 
-            <div className="thinking-flow" data-reveal>
+            <div className="thinking-flow" data-reveal="scale">
               {thinkingProcess.map((item) => (
                 <article key={item.step}>
                   <span>{item.step}</span>
@@ -280,7 +288,7 @@ export default function Home() {
             </div>
 
             <div className="production-layout">
-              <div className="production-steps" data-reveal>
+              <div className="production-steps" data-reveal="left">
                 <p className="subsection-label">ACTUAL PROCESS</p>
                 <h3>실제 제작은 한 사람과 선명하게 진행됩니다.</h3>
                 <ol>
@@ -292,7 +300,7 @@ export default function Home() {
                   ))}
                 </ol>
               </div>
-              <div className="production-routes" data-reveal>
+              <div className="production-routes" data-reveal="right">
                 <p className="subsection-label">TWO ROUTES</p>
                 {productionRoutes.map((route, index) => (
                   <article key={route.label}>
@@ -313,7 +321,7 @@ export default function Home() {
 
         <section className="section portfolio" id="portfolio">
           <div className="container">
-            <div className="portfolio__heading" data-reveal>
+            <div className="portfolio__heading" data-reveal="left">
               <SectionLabel number="05">PORTFOLIO</SectionLabel>
               <h2>카테고리는 달라도, 반응을 만드는 순서는 같습니다.</h2>
               <p>공개 승인된 작업 이미지는 같은 구조 안에서 바로 교체할 수 있도록 준비했습니다.</p>
@@ -326,7 +334,7 @@ export default function Home() {
 
         <section className="section contact" id="contact">
           <div className="container">
-            <div className="contact__header" data-reveal>
+            <div className="contact__header" data-reveal="up">
               <SectionLabel number="06">{contact.eyebrow}</SectionLabel>
               <h2>{contact.title}</h2>
               <div>
@@ -338,7 +346,7 @@ export default function Home() {
 
             <div className="contact__layout">
               <ContactForm />
-              <aside className="contact__aside" data-reveal>
+              <aside className="contact__aside" data-reveal="right">
                 <p>DIRECT CONTACT</p>
                 <TrackedLink href={`mailto:${siteConfig.email}`} eventName="email_click">
                   <Mail aria-hidden="true" />
@@ -357,7 +365,7 @@ export default function Home() {
       </main>
 
       <footer className="footer">
-        <div className="container footer__inner">
+        <div className="container footer__inner" data-reveal="up">
           <a className="brand-mark brand-mark--footer" href="#top">
             <span>{siteConfig.name}</span>
             <small>{siteConfig.role}</small>
@@ -371,7 +379,7 @@ export default function Home() {
           </div>
           <p>© {new Date().getFullYear()} HARAN PARK. ALL RIGHTS RESERVED.</p>
         </div>
-        <div className="container footer__admin-row">
+        <div className="container footer__admin-row" data-reveal="up">
           <a href="/admin">관리자 페이지</a>
         </div>
       </footer>

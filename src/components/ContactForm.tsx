@@ -61,7 +61,7 @@ export function ContactForm() {
   };
 
   return (
-    <form className="contact-form" noValidate onSubmit={handleSubmit}>
+    <form className="contact-form" data-reveal="left" noValidate onSubmit={handleSubmit}>
       <div className="field field--full">
         <label htmlFor="brand-link">
           브랜드·제품·스토어 링크 <span>필수</span>
